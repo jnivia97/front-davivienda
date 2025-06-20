@@ -1,24 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import Register from './pages/Register';
+import Login from './pages/Login';
+import Home from './pages/Home';
+import CreateSurvey from './pages/CreateSurvey';
+import SurveyDetail from './pages/SurveyDetail';
+import PublicSurvey from './pages/PublicSurvey';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Home />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/create" element={<CreateSurvey />} />
+        <Route path="/survey/:id" element={<SurveyDetail />} />
+        <Route path="/public/:id" element={<PublicSurvey />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
