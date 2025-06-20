@@ -15,9 +15,9 @@ function SurveyDetail() {
 
     const eliminar = async () => {
         try {
-            await axios.delete(`http://localhost:8080/encuesta/delete?id=${id}`);
+            await axios.get(`http://localhost:8080/encuesta/delete?id=${id}`);
             alert('Encuesta eliminada');
-            navigate('/');
+            navigate('/home');
         } catch (err) {
             console.error(err);
         }
