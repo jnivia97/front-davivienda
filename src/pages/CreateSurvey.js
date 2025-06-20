@@ -13,7 +13,7 @@ function CreateSurvey() {
     setPreguntas([...preguntas, {
       pregunta: '',
       tipoPregunta: false,
-      opcionPreguntaRequest: [{ textoOpcion: '' }]
+      opcionPreguntaRequest: [{ option: '' }]
     }]);
   };
 
@@ -25,13 +25,13 @@ function CreateSurvey() {
 
   const handleOpcionChange = (pIndex, oIndex, value) => {
     const nuevas = [...preguntas];
-    nuevas[pIndex].opcionPreguntaRequest[oIndex].textoOpcion = value;
+    nuevas[pIndex].opcionPreguntaRequest[oIndex].option = value;
     setPreguntas(nuevas);
   };
 
   const agregarOpcion = (pIndex) => {
     const nuevas = [...preguntas];
-    nuevas[pIndex].opcionPreguntaRequest.push({ textoOpcion: '' });
+    nuevas[pIndex].opcionPreguntaRequest.push({ option: '' });
     setPreguntas(nuevas);
   };
 
@@ -45,7 +45,7 @@ function CreateSurvey() {
         pregunta: preguntas
       });
       alert('Encuesta creada');
-      navigate('/');
+      navigate('/home');
     } catch (err) {
       console.error(err);
       alert('Error al crear encuesta');
@@ -67,7 +67,7 @@ function CreateSurvey() {
               <option value="true">Cerrada</option>
             </select>
             {p.tipoPregunta && p.opcionPreguntaRequest.map((o, j) => (
-              <input key={j} className="form-control mb-1" placeholder="Opción" value={o.textoOpcion} onChange={e => handleOpcionChange(i, j, e.target.value)} />
+              <input key={j} className="form-control mb-1" placeholder="Opción" value={o.option} onChange={e => handleOpcionChange(i, j, e.target.value)} />
             ))}
             {p.tipoPregunta && <button type="button" className="btn btn-sm btn-outline-primary" onClick={() => agregarOpcion(i)}>+ Opción</button>}
           </div>
